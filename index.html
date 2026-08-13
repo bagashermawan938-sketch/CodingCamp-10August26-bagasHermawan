@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus Board</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="hero-panel">
+          <div class="theme-toggle-wrap">
+            <button id="themeToggleBtn" class="theme-toggle" type="button" aria-label="Toggle theme">Light mode</button>
+          </div>
+          <div class="clock" id="clockLabel">10:45:22</div>
+          <div class="date-text" id="dateLabel">Tuesday, January 27, 2026</div>
+          <h1 id="greeting">Good Morning</h1>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="card timer-card">
+          <div class="card-header">
+            <h2>Focus Timer</h2>
+          </div>
+
+          <div class="timer-display" aria-live="polite">
+            <span id="minutes">25</span>
+            <span class="separator">:</span>
+            <span id="seconds">00</span>
+          </div>
+
+          <div class="timer-controls">
+            <button id="startPauseBtn" class="primary">Start</button>
+            <button id="resetBtn" class="secondary">Reset</button>
+          </div>
+
+          <div class="timer-settings">
+            <label for="durationInput">Session length</label>
+            <div class="duration-row">
+              <input id="durationInput" type="number" min="1" max="90" value="25" />
+              <button id="applyDurationBtn" class="secondary small">Apply</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card todo-card">
+          <div class="card-header">
+            <h2>Tasks</h2>
+          </div>
+
+          <form id="todoForm" class="stack-form todo-form">
+            <input id="todoInput" type="text" placeholder="Add a new task..." maxlength="120" required />
+            <button type="submit" class="primary add-task-btn">Add</button>
+          </form>
+
+          <ul id="todoList" class="item-list" aria-live="polite"></ul>
+        </section>
+
+        <section class="card links-card">
+          <div class="card-header">
+            <h2>Quick Links</h2>
+          </div>
+
+          <form id="linkForm" class="stack-form link-form">
+            <input id="linkTitle" type="text" placeholder="Link name" maxlength="40" required />
+            <input id="linkUrl" type="url" placeholder="URL" required />
+            <button type="submit" class="primary add-link-btn">Add Link</button>
+          </form>
+
+          <ul id="linkList" class="link-grid" aria-live="polite"></ul>
+        </section>
+
+        <section class="card attendance-card">
+          <div class="card-header">
+            <h2>Absen</h2>
+          </div>
+
+          <form id="attendanceForm" class="attendance-form">
+            <input id="attendanceId" type="hidden" />
+            <input id="attendanceName" type="text" placeholder="Nama" maxlength="40" required />
+            <select id="attendanceStatus" aria-label="Status absen">
+              <option value="Hadir">Hadir</option>
+              <option value="Izin">Izin</option>
+              <option value="Sakit">Sakit</option>
+            </select>
+            <input id="attendanceCheckIn" type="time" aria-label="Jam masuk" />
+            <input id="attendanceCheckOut" type="time" aria-label="Jam pulang" />
+            <button type="submit" class="primary">Simpan</button>
+          </form>
+
+          <div class="attendance-summary">
+            <span>Hari ini</span>
+            <strong id="attendanceToday">0</strong>
+          </div>
+        </section>
+
+        <section class="card admin-card">
+          <div class="card-header admin-header">
+            <h2>Panel Admin</h2>
+            <button id="adminLogoutBtn" class="secondary small hidden">Logout</button>
+          </div>
+
+          <div id="adminLoginPanel" class="admin-login-panel">
+            <input id="adminPasswordInput" type="password" placeholder="Password admin" />
+            <button id="adminLoginBtn" class="primary">Masuk</button>
+          </div>
+
+          <div id="adminContent" class="admin-content hidden">
+            <div class="admin-stats">
+              <div class="stat-box">
+                <span class="stat-label">Hadir</span>
+                <strong id="presentCount">0</strong>
+              </div>
+              <div class="stat-box">
+                <span class="stat-label">Izin</span>
+                <strong id="permitCount">0</strong>
+              </div>
+              <div class="stat-box">
+                <span class="stat-label">Sakit</span>
+                <strong id="sickCount">0</strong>
+              </div>
+            </div>
+
+            <ul id="adminAttendanceList" class="admin-list" aria-live="polite"></ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
